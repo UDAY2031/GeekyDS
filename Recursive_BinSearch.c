@@ -29,7 +29,7 @@ int main(){
     scanf("%d",&key);
     int result = binary_search(a,key,0,n-1);
     if(result==-1)
-    printf("Element %d not found:",key);
+    printf("Element %d not found",key);
     else
     printf("Element %d found at location %d",key,result+1);
     return 0;

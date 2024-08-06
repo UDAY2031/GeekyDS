@@ -17,7 +17,6 @@ while(i<n1 && j<n2){
 if(l[i]<r[j]){
 a[k] = l[i];
 i++;
-k++;
 }else{
 a[k] = r[j];
 j++;

@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-// Global variable to keep track of inversions
-int count;
+int count = 0;  // Global variable to keep track of inversions
 
 // Function to merge two halves of the array and count inversions
 void merge(int arr[], int l, int m, int r) {
@@ -22,7 +21,8 @@ void merge(int arr[], int l, int m, int r) {
     while (i < n1 && j < n2) {
         if (L[i] <= R[j]) {
             arr[k++] = L[i++];
-        } else {
+        } 
+        else {
             arr[k++] = R[j++];
             count += (n1 - i);  // Count inversions
         }
@@ -49,46 +49,48 @@ void mergeSort(int arr[], int l, int r) {
 
 // Function to find the minimum of three numbers
 int min(int a, int b, int c) {
-    if (a < b && a < c)
-        return a;
-    else if (b < c)
-        return b;
-    else
-        return c;
+    int min = a;
+    if (b < min) 
+        min = b;
+    if (c < min)
+        min = c;
+    return min;
 }
 
-// Function to count inversions in an array and return the count
-int countInversions(int arr[], int n) {
-    count = 0;
-    mergeSort(arr, 0, n - 1);
-    return count;
-}
-
-// Function to print the array
-void printArray(int arr[], int len) {
-    for (int i = 0; i < len; i++) {
-        printf("%d ", arr[i]);
+void printArray(int arr[],int len){
+    for (int i=0;i<len;i++){
+        printf("%d ",arr[i]);
     }
     printf("\n");
 }
 
 int main() {
-    int n = 8; // Number of songs
+    int n = 8; //Number of songs
     
     int arr1[] = {4, 3, 2, 1, 5, 6, 8, 7};
-    printf("User 1: ");
-    printArray(arr1, n);
-    int a = countInversions(arr1, n);
+    printf("User 1 : ");
+    printArray(arr1,n);
+
+    // Reset count before sorting each array
+    count = 0;
+    mergeSort(arr1, 0, n - 1);
+    int a = count;
 
     int arr2[] = {4, 2, 3, 1, 5, 7, 8, 6};
-    printf("User 2: ");
-    printArray(arr2, n);
-    int b = countInversions(arr2, n);
+    printf("User 2 : ");
+    printArray(arr2,n);
+    
+    count = 0;  // Reset count before sorting each array
+    mergeSort(arr2, 0, n - 1);
+    int b = count;
 
     int arr3[] = {7, 1, 4, 3, 2, 5, 8, 6};
-    printf("User 3: ");
-    printArray(arr3, n);
-    int c = countInversions(arr3, n);
+    printf("User 3 : ");
+    printArray(arr3,n);
+
+    count = 0;  // Reset count before sorting each array
+    mergeSort(arr3, 0, n - 1);
+    int c = count;
 
     int d = min(a, b, c);
 
